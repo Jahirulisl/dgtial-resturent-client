@@ -20,43 +20,45 @@ import slidImg5 from '../../../assets/home/slide5.jpg';
 
 const Catagory = () => {
   return (
-    <Swiper
-      slidesPerView={4}
-      spaceBetween={30}
-      centeredSlides={true}
-      pagination={{
-        clickable: true,
-      }}
-      modules={[Pagination]}
-      className="mySwiper mb-24"
-    >
-      <SwiperSlide>
-        <img src={slidImg1} alt="" />
-         <h3 className='text-xl uppercase text-center text-white -mt-8'>salads</h3>
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={slidImg2} alt="" />
-         <h3 className='text-xl uppercase text-center text-white -mt-12'>Pizzas</h3>
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={slidImg3} alt="" />
-         <h3 className='text-xl uppercase text-center text-white -mt-8'>soups</h3>
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={slidImg4} alt="" />
-         <h3 className='text-xl uppercase text-center text-white -mt-8'>disirts</h3>
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={slidImg5} alt="" />
-         <h3 className='text-xl uppercase text-center text-white -mt-8'>salads</h3>
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={slidImg1} alt="" />
-         <h3 className='text-xl uppercase text-center text-white -mt-8'>katakhaki school</h3>
+    <section>
+      <Swiper
+        slidesPerView={4}
+        spaceBetween={30}
+        centeredSlides={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        className="mySwiper mb-24"
+      >
+        <SwiperSlide>
+          <img src={slidImg1} alt="" />
+          <h3 className='text-xl uppercase text-center text-white -mt-8'>salads</h3>
         </SwiperSlide>
-      <SwiperSlide>Slide 8</SwiperSlide>
-      <SwiperSlide>Slide 9</SwiperSlide>
-    </Swiper>
+        <SwiperSlide>
+          <img src={slidImg2} alt="" />
+          <h3 className='text-xl uppercase text-center text-white -mt-12'>Pizzas</h3>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={slidImg3} alt="" />
+          <h3 className='text-xl uppercase text-center text-white -mt-8'>soups</h3>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={slidImg4} alt="" />
+          <h3 className='text-xl uppercase text-center text-white -mt-8'>disirts</h3>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={slidImg5} alt="" />
+          <h3 className='text-xl uppercase text-center text-white -mt-8'>salads</h3>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={slidImg1} alt="" />
+          <h3 className='text-xl uppercase text-center text-white -mt-8'>katakhaki school</h3>
+        </SwiperSlide>
+        <SwiperSlide>Slide 8</SwiperSlide>
+        <SwiperSlide>Slide 9</SwiperSlide>
+      </Swiper>
+    </section>
   );
 };
 
