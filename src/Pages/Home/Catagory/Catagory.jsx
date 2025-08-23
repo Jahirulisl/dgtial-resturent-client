@@ -16,11 +16,14 @@ import slidImg2 from '../../../assets/home/slide2.jpg';
 import slidImg3 from '../../../assets/home/slide3.jpg';
 import slidImg4 from '../../../assets/home/slide4.jpg';
 import slidImg5 from '../../../assets/home/slide5.jpg';
-
+import SectionTetle from '../../../Components/SectionTitle/SectionTitle';
 
 const Catagory = () => {
   return (
     <section>
+      <SectionTetle subHeading={"From 11.00am to 10.00pm "}
+      heading={"order online"} >
+      </SectionTetle>
       <Swiper
         slidesPerView={4}
         spaceBetween={30}

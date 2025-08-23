@@ -2,7 +2,7 @@ import bgImg from '../../../assets/home/chef-service.jpg';
 const Templet = () => {
   return (
     <div className=" flex justify-center h-screen items-center mb-24"
-      style={{ backgroundImage: `url(${bgImg})` }}
+      style={{ backgroundImage: `url(${bgImg})`}}
 
     >
 
