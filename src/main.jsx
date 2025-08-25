@@ -7,11 +7,16 @@ import {
 } from "react-router-dom";
 import { router } from './Routes/Routers';
 
+//for healmet from react-helmet-async start
+import { HelmetProvider } from 'react-helmet-async';
+//for healmet from react-helmet-async end
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-     <div className='max-w-screen-xl mx-auto'>
+    <HelmetProvider>
+       <div className='max-w-screen-xl mx-auto'>
        <RouterProvider router={router} />
      </div>
+    </HelmetProvider>
   </StrictMode>,
 )
