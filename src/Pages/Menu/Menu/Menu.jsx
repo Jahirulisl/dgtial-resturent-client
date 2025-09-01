@@ -23,7 +23,6 @@ const Menu = () => {
   const offered = menu.filter(item => item.category === 'offered');
   const drinks = menu.filter(item => item.category === 'drinks');
   const soup = menu.filter(item => item.category === 'soup');
-
   const pizza = menu.filter(item => item.category === 'pizza');
  //import from menu.json end all category
   return (

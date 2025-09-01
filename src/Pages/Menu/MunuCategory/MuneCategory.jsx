@@ -3,7 +3,7 @@ import MenuItems from '../../Home/Home/Shared/MenuItems/MenuItems';
 import Cover from '../../Home/Home/Shared/Cover/Cover';
 
 const MuneCategory = ({items,title,img}) => {
-      console.log("Title prop:",title);
+      // console.log("Title prop:",title);
   return (
     <div className='pt-8'>
       {title && <Cover img={img} title ={title}></Cover>}
