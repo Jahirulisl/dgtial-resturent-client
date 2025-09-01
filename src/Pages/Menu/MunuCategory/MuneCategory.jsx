@@ -1,0 +1,21 @@
+
+import MenuItems from '../../Home/Home/Shared/MenuItems/MenuItems';
+import Cover from '../../Home/Home/Shared/Cover/Cover';
+
+const MuneCategory = ({items,title,img}) => {
+      console.log("Title prop:",title);
+  return (
+    <div className='pt-8'>
+      {title && <Cover img={img} title ={title}></Cover>}
+      <div className='grid md:grid-cols-2 gap-10 my-16'>
+        {items.map(item => 
+          <MenuItems
+            key={item._id} item={item}>
+          </MenuItems>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default MuneCategory;
