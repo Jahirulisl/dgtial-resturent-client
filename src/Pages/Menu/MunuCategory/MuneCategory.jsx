@@ -1,6 +1,7 @@
 
 import MenuItems from '../../Home/Home/Shared/MenuItems/MenuItems';
 import Cover from '../../Home/Home/Shared/Cover/Cover';
+import { Link } from 'react-router-dom';
 
 const MuneCategory = ({items,title,img}) => {
       // console.log("Title prop:",title);
@@ -14,6 +15,10 @@ const MuneCategory = ({items,title,img}) => {
           </MenuItems>
         )}
       </div>
+       {/* for order button strt */}
+      <Link to={`/order/${title}`}>
+        <button className="btn btn-outline border-0 border-b-4 mt-4">Order Now</button>
+      </Link>
     </div>
   );
 };

@@ -6,13 +6,20 @@ import Cover from "../../Home/Home/Shared/Cover/Cover";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useMenu from "../../../hooks/useMenu";
-import FoodCard from "../../../Components/SectionTitle/FoodCard/FoodCard";
+// import FoodCard from "../../../Components/SectionTitle/FoodCard/FoodCard";
 import OrderTab from "../OrderTab/OrderTab";
+import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 //for react tabs end 
 
 const Order = () => {
+  //for order all categorys start
+  const categories = ['salad', 'pizza', 'soup', 'dessert', 'drinks'];
+  const { category } = useParams();
+  const initialIndex = categories.indexOf(category);
+  //for order all categorys end
   //for tabs 
-  const [tabIndex, setTabIndex] = useState(0);
+  const [tabIndex, setTabIndex] = useState(initialIndex);
 
   //import from menu.json start all category
   const [menu] = useMenu();
@@ -25,6 +32,12 @@ const Order = () => {
   //import from menu.json end all category
   return (
     <div>
+      {/* use helmet start */}
+      <Helmet>
+        <title> Bistro Boss | Order Food</title>
+      </Helmet>
+      {/* use helmet end */}
+
       <Cover img={orderImg} title="Order Food" ></Cover>
 
       {/*tab from react tab uncontrol mood*/}
@@ -51,7 +64,7 @@ const Order = () => {
 
         {/* for soup start */}
         <TabPanel>
-           <OrderTab items={soup}></OrderTab>
+          <OrderTab items={soup}></OrderTab>
         </TabPanel>
         {/* for soup end */}
 
