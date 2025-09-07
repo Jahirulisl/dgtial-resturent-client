@@ -31,7 +31,9 @@ const Login = () => {
             className="card-body">
 
             <div className="form-control">
-              <label className="label">Email</label>
+              <label className="label">
+                <span>Email</span>
+              </label>
 
               <input type="email"
                 name="email"
@@ -39,7 +41,9 @@ const Login = () => {
             </div>
 
             <div className="form-control">
-              <label className="label">Password</label>
+              <label className="label">
+                <span>Email</span>
+              </label>
 
               <input type="password"
                 name="password"
