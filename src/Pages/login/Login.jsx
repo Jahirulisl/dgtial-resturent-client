@@ -33,6 +33,15 @@ const Login = () => {
       .then(result => {
         const user = result.user;
         console.log(user);
+        //for sweet alart start
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        //for sweet alart end
       })
     //from authprovider use authcontext end
   }
