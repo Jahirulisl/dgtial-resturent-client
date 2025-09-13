@@ -2,7 +2,7 @@
 import { useContext, useEffect,useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../providers/AuthProvider';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 //for captcha import end 
@@ -12,6 +12,11 @@ const Login = () => {
   //for navigate stape 1
 
   const navigate =useNavigate();
+
+  //for location start
+  const location = useLocation();
+
+  const from =location.state?.from.pathname || "/" ;
   //  for captcha veladate start>>>
 
   //for valedate captcah true
@@ -49,7 +54,7 @@ const Login = () => {
         //for sweet alart end
 
         //for navigate/home page>>
-       navigate("/")
+       navigate(from,{replace: true});
       })
     //from authprovider use authcontext end
   }
