@@ -1,15 +1,19 @@
 //for captcha import start 
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect,useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../providers/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 //for captcha import end 
 
 const Login = () => {
-  //  for captcha veladate
-  const captchaRef = useRef(null);
+
+  //for navigate stape 1
+
+  const navigate =useNavigate();
+  //  for captcha veladate start>>>
+
   //for valedate captcah true
   const [disabled, setDisabled] = useState(true);
 
@@ -38,17 +42,20 @@ const Login = () => {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "Your work has been saved",
+          title: "User Login Successfull.",
           showConfirmButton: false,
           timer: 1500
         });
         //for sweet alart end
+
+        //for navigate/home page>>
+       navigate("/")
       })
     //from authprovider use authcontext end
   }
   //for validate captcha start
-  const handleValidateCattcha = () => {
-    const user_captcha_value = captchaRef.current.value;
+  const handleValidateCattcha = (e) => {
+    const user_captcha_value = e.target.value;
     if (validateCaptcha(user_captcha_value)) {
       setDisabled(false);
     }
@@ -98,11 +105,15 @@ const Login = () => {
                 <label className="lable">
                   <LoadCanvasTemplate />
                 </label>
-                <input type="text" ref={captchaRef}
+                <input onBlur={handleValidateCattcha} type="text" 
                   name="captcha"
                   className="input input-bordered" placeholder="type captcha get above" />
+
+
                 {/* for validet type captcha btn */}
-                <button onClick={handleValidateCattcha} className="btn btn-outline btn-xs mt-2">validate</button>
+                {/* <button className="btn btn-outline btn-xs mt-2">validate</button> */}
+
+
               </div>
               {/* fOR CAPTCHA END */}
 

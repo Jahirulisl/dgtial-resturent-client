@@ -23,6 +23,7 @@ const Navbar = () => {
     <li><Link to='menu'>Our Menu</Link></li>
     <li><Link to='order/salad'>Our Order</Link></li>
     <li><Link to='menu'>Our Menu</Link></li>
+     <li><Link to='/secret'>Secrete</Link></li>
 
     {
       user ? <>
@@ -31,7 +32,6 @@ const Navbar = () => {
       <li><Link to='login'>Log IN</Link></li>
       </>
     }
-
 
   </>
   return (
