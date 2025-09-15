@@ -17,6 +17,7 @@ const Login = () => {
   const location = useLocation();
 
   const from =location.state?.from.pathname || "/" ;
+   console.log('state in the location login page', location.state);
   //  for captcha veladate start>>>
 
   //for valedate captcah true

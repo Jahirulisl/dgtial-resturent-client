@@ -1,10 +1,13 @@
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const FoodCard = ({ item }) => {
   //from category item start
   const { name, image, price, recipe } = item;
+
+   //for location get us state
+ const locaion = useLocation();
 
   //for navigate other page start
   const navigate = useNavigate();
@@ -32,7 +35,7 @@ const FoodCard = ({ item }) => {
       }).then((result) => {
         if (result.isConfirmed) {
            //send the user to the login page 
-           navigate('/login')
+           navigate('/login', {state:{from: locaion}})
         }
       });
       //alart message end>
