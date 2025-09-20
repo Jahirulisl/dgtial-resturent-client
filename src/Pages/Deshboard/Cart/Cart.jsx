@@ -2,13 +2,16 @@
 import { FaTrashAlt } from 'react-icons/fa';
 import useCart from '../../../hooks/useCart';
 import Swal from 'sweetalert2';
+import useAxiosSecur from '../../../hooks/useAxiosSecur';
 
 const Cart = () => {
   //amra cart ar information ta anbo useCart hook thaka
-  const [cart] = useCart();
+  const [cart,refetch] = useCart(); //refetch nia aslam updetar jonno o
   //for price start>
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
-  //for delete start
+  //for delete start use axios
+ const axiosSecure = useAxiosSecur();
+
   const handleDelete = id => {
     Swal.fire({
       title: "Are you sure?",
@@ -20,12 +23,17 @@ const Cart = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        // Swal.fire({
-        //   title: "Deleted!",
-        //   text: "Your file has been deleted.",
-        //   icon: "success"
-        // });
-        
+       axiosSecure.delete(`/carts/${id}`)
+       .then(res =>{
+        if(res.data.deletedCount > 0){
+         Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+        refetch();
+        }
+       })
       }
     });
   }
