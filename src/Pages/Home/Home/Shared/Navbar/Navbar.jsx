@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../../providers/AuthProvider";
 //FOR CARD
 import { FaCartPlus } from "react-icons/fa6";
+import useCart from "../../../../../hooks/useCart";
 
 const Navbar = () => {
+  //for quary tan stock
+  const [cart] = useCart(); 
+
 
   //for user and login get from authContext start
 
@@ -29,7 +33,7 @@ const Navbar = () => {
     <li>
       <Link to="/">
         <button className="btn">
-           <FaCartPlus className="mr-2"></FaCartPlus > <div className="badge badge-sm badge-secondary">+0</div>
+           <FaCartPlus className="mr-2"></FaCartPlus > <div className="badge badge-sm badge-secondary">+{cart.length}</div>
         </button>
       </Link>
     </li>
