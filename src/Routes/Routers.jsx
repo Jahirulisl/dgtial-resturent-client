@@ -10,6 +10,8 @@ import Login from "../Pages/login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import Secret from "../Pages/Home/Home/Shared/Secret/Secret";
 import PrivateRoute from "./PrivateRoute";
+import Deshboard from "../Layout/Deshboard";
+import Cart from "../Pages/Deshboard/Cart/Cart";
 
 export const router = createBrowserRouter([
   {
@@ -44,4 +46,14 @@ export const router = createBrowserRouter([
       },
     ]
   },
+  {
+    path:'deshboard',
+    element:<Deshboard></Deshboard>,
+    children:[
+      {
+        path:'cart',
+        element:<Cart></Cart>,
+      }
+    ]
+  }
 ]);

@@ -31,7 +31,8 @@ const Navbar = () => {
     <li><Link to='menu'>Our Menu</Link></li>
     <li><Link to='/secret'>Secrete</Link></li>
     <li>
-      <Link to="/">
+         {/* for shoping card show*/}
+      <Link to="/deshboard/cart">
         <button className="btn">
            <FaCartPlus className="mr-2"></FaCartPlus > <div className="badge badge-sm badge-secondary">+{cart.length}</div>
         </button>
