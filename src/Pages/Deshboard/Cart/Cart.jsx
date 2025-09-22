@@ -4,7 +4,7 @@ import useCart from '../../../hooks/useCart';
 import Swal from 'sweetalert2';
 import useAxiosSecur from '../../../hooks/useAxiosSecur';
 
-const Cart = () => {
+const Cart = () =>{
   //amra cart ar information ta anbo useCart hook thaka
   const [cart,refetch] = useCart(); //refetch nia aslam updetar jonno o
   //for price start>
@@ -41,7 +41,7 @@ const Cart = () => {
     <div>
       <div className='flex justify-evenly mb-8'>
         <h2 className="text-4xl">Items: {cart.length}</h2>
-        <h2 className="text-4xl">Total price:{totalPrice}</h2>
+        <h2 className="text-4xl">Total price:${totalPrice}</h2>
         <button className='btn btn-primary'>Pay</button>
       </div>
       {/* for tabile start */}

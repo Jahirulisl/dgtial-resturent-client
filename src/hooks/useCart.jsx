@@ -11,7 +11,7 @@ const useCart = () => {
   const axiosSecure = useAxiosSecur();
   //amra axios dia loade na kora tanstack Query
   const {data:cart = [],refetch} = useQuery({
-    quaryKey: ['cart',user?.email],
+    queryKey: ['cart',user?.email],
     queryFn: async()=>{
       const res = await axiosSecure.get(`/carts?email=${user.email}`)
       return res.data;

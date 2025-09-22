@@ -4,44 +4,55 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
+  //for get axiospublic useAxiosPublic hook
+  const axiospublic = useAxiosPublic();
+
   // use navigat for login page 
   const naviget = useNavigate();
 
   //from react hooks form start
-  const { register, handleSubmit, reset,formState: { errors }, } = useForm();
+  const { register, handleSubmit, reset, formState: { errors }, } = useForm();
   //from react hooks form end
 
   //user informotion ta nia asbo from authProvider
-  const { createUser, updateUserProfile} = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
 
   const onSubmit = data => {
-    console.log(data);
     createUser(data.email, data.password)
-      .then(result =>{
+      .then(result => {
         const loggedUser = result.user;
         console.log(loggedUser);
         updateUserProfile(data.name, data.PhotoURL)
           .then(() => {
             console.log("user profile info updated")
-            reset();
-            //for sweet alart start
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "User Created Successfull.",
-              showConfirmButton: false,
-              timer: 1500
-            });
-            //for sweet alart end
+            //create user entry in the database
+            const userInfo = {
+              name: data.name,
+              email: data.email,
+            }
+            axiospublic.post('/users', userInfo)
+              .then(res => {
+                if (res.data.insertedId){
+                  console.log('user added to the data base')
+                  reset();
+                  //for sweet alart start
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User Created Successfull.",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  naviget("/");
+                }
+              })
           })
           .catch(error => console.log(error));
-
         //for go login
-        naviget("/");
       })
-
   };
 
   return (
