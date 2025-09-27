@@ -31,7 +31,7 @@ const Deshboard = () => {
               </li>
 
               <li>
-                <NavLink to="/deshboard/users"> <FaUser></FaUser> All Users</NavLink>
+                <NavLink to="/deshboard/allusers"> <FaUser></FaUser> All Users</NavLink>
               </li>
             </>
               : <>
