@@ -13,7 +13,27 @@ const AllUsers = () => {
       const res = await axiosSecure.get('/users');
       return res.data;
     }
-  })
+  });
+
+   //make user handle MakeAdmin start
+  const handleMakeAdmin = user => {
+    axiosSecure.patch(`/users/admin/${user._id}`)
+      .then(res => {
+        console.log(res.data)
+        if (res.data.modifiedCount > 0)
+         {
+          refetch();
+           Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} is an admin Now!`,
+            showConfirmButton: false,
+            timer: 1500
+          });
+          }
+      })
+  }
+  //make user handle MakeAdmin end
 
   //make handledelete  and add sweet alart
   const handleDelete = user => {
@@ -67,9 +87,10 @@ const AllUsers = () => {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>
-                  <button onClick={() => handleDelete(user)} className="btn btn-lg  bg-orange-500">
+                  {user.role === 'admin'? 'Admin' :<button onClick={() => handleMakeAdmin(user)} className="btn btn-lg  bg-orange-500">
                     <FaUser className='text-white text-2xl'></FaUser>
                   </button>
+                  }
                 </td>
                 <td>
                   <button onClick={() => handleDelete(user)} className="btn btn-ghost btn-lg">
