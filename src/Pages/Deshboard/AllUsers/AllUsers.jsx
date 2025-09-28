@@ -5,17 +5,19 @@ import { FaUser } from "react-icons/fa6";
 import Swal from "sweetalert2";
 
 const AllUsers = () => {
-  
   const axiosSecure = useAxiosSecur();
   const { data: users = [],refetch } = useQuery({
     queryKey: ['users'],
     queryFn: async () => {
-      const res = await axiosSecure.get('/users');
+      const res = await axiosSecure.get('/users', {
+        headers:{
+          Authorization: `Bearer ${localStorage.getItem('access-token')}`
+        }
+      });
       return res.data;
     }
   });
-
-   //make user handle MakeAdmin start
+ //make user handle MakeAdmin start
   const handleMakeAdmin = user => {
     axiosSecure.patch(`/users/admin/${user._id}`)
       .then(res => {
