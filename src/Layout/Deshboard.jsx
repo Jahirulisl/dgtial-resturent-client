@@ -1,13 +1,14 @@
-import { FaAd, FaBook, FaCalendar, FaEnvelope, FaHome, FaSearch, FaShoppingCart, FaUser, FaUtensils, FaVoicemail } from "react-icons/fa";
+import { FaAd, FaBook, FaCalendar, FaEnvelope, FaHome, FaSearch, FaShoppingCart, FaUser, FaUtensils} from "react-icons/fa";
 import { FaList } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Deshboard = () => {
   //for cart length use useCart come
   const [cart] = useCart();
   //TODO: get isAdmin value from the data base
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
   return (
     <div className="flex">
       {/*dash board site bar  */}
