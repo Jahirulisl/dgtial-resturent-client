@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { FaUtensils } from 'react-icons/fa';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAxiosSecur from '../../../hooks/useAxiosSecur';
+import Swal from 'sweetalert2';
 
 //import imgbb  hosting url start
 const image_hostion_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -15,9 +16,9 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hostion_ke
 const AddItems = () => {
   const axiosPublic = useAxiosPublic();
   //for  axiosSecqure 
-const axiosSecqure = useAxiosSecur();
+  const axiosSecqure = useAxiosSecur();
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit,reset} = useForm();
   const onSubmit = async (data) => {
     console.log(data)
     //image upload to imgbb and then get an url start
@@ -27,7 +28,7 @@ const axiosSecqure = useAxiosSecur();
         'content-type': 'multipart/form-data'
       }
     });
-     //now send the menu item data to the server with the image start
+    //now send the menu item data to the server with the image start
     if (res.data.success) {
       const menuItem = {
         name: data.name,
@@ -40,11 +41,19 @@ const axiosSecqure = useAxiosSecur();
       //
       const menuRes = await axiosSecqure.post('/menu', menuItem);
       console.log(menuRes.data)
-      if(menuRes.data.insertedId){
+      if (menuRes.data.insertedId) {
         //show POPup 
+        reset();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${data.name} is addaed to the menue`,
+          showConfirmButton: false,
+          timer: 1500
+        });
       }
     }
-    console.log( 'with image url',res.data);
+    console.log('with image url', res.data);
     //image upload to imgbb and then get an url end
   };
 
