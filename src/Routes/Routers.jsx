@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
       //admin only routes 
       {
         path: 'addItems',
-        element:<AdminRoute><AddItems></AddItems></AdminRoute>
+       element:<AdminRoute><AddItems></AddItems></AdminRoute>
       },
       {
         path:'allusers',

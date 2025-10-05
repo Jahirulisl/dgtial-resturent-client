@@ -8,7 +8,11 @@ const PrivateRoute = ({children}) => {
   const location = useLocation();
   //abr user thakla amra children ta patabo na hola navigate koran onno>
   if(loading){
-    return <progress className="progress w-56"></progress>
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <progress className="progress w-56"></progress>
+      </div>
+    )
   }
 
   if (user){
