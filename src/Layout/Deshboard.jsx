@@ -24,7 +24,7 @@ const Deshboard = () => {
               </li>
 
               <li>
-                <NavLink to="/deshboard/manageitems"> <FaList></FaList> Manage Items ({cart.length})</NavLink>
+                <NavLink to="/deshboard/managitems"> <FaList></FaList> Manage Items ({cart.length})</NavLink>
               </li>
 
               <li>
