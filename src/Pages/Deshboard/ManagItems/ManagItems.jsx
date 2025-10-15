@@ -1,9 +1,11 @@
 import React from 'react';
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 import useMenu from '../../../hooks/useMenu';
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import useAxiosSecur from '../../../hooks/useAxiosSecur';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
+
 
 const ManagItems = () => {
   const [menu, refetch] = useMenu();
@@ -24,8 +26,8 @@ const ManagItems = () => {
       if (result.isConfirmed) {
         const res = await axiousSecure.delete(`/menu/${item._id}`);
         // console.log(res.data);
-        if (res.data.deletedCount > 0){
-           refetch();
+        if (res.data.deletedCount > 0) {
+          refetch();
           Swal.fire({
             title: "Deleted!",
             text: "Your file has been deleted.",
@@ -36,6 +38,12 @@ const ManagItems = () => {
     });
   }
   //for delete handle end
+  const handleUpdateItem = () => {
+
+  }
+  //handle menu UpdateItem start
+
+  //handle menu UpdateItem end
 
   return (
     <div>
@@ -77,9 +85,15 @@ const ManagItems = () => {
                     {item.name}
                   </td>
                   <td className='text-right'>${item.price}</td>
+                  {/* manageItem update button start */}
                   <td>
-                    <button className="btn btn-ghost btn-xs">details</button>
+                    <Link to={`/deshboard/updateitem/${item._id}`}>
+                      <button onClick={handleUpdateItem(item)} className="btn btn-ghost btn-lg bg-orange-500 hover:bg-orange-100">
+                        <FaEdit className='text-white '></FaEdit>
+                      </button>
+                    </Link>
                   </td>
+                  {/* manageItem update button end */}
                   <td>
                     <button onClick={() => handleDeleteItems(item)} className="btn btn-ghost btn-lg">
                       <FaTrashAlt className='text-red-600'></FaTrashAlt>

@@ -16,6 +16,7 @@ import AllUsers from "../Pages/Deshboard/AllUsers/AllUsers";
 import AddItems from "../Pages/Deshboard/AddItems/AddItems";
 import AdminRoute from "./AdminRoute";
 import ManagItems from "../Pages/Deshboard/ManagItems/ManagItems";
+import UpdateItem from "../Pages/Deshboard/UpdateItem/UpdateItem";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -52,7 +53,7 @@ export const router = createBrowserRouter([
    // root level admin routes
   {
     path:'deshboard',
-    element:<PrivateRoute><Deshboard></Deshboard></PrivateRoute>,
+    element:(<PrivateRoute><Deshboard></Deshboard></PrivateRoute>),
     children:[
       //normal users routes
       {
@@ -63,15 +64,26 @@ export const router = createBrowserRouter([
       //admin only routes 
       {
         path: 'addItems',
-       element:<AdminRoute><AddItems></AddItems></AdminRoute>
+       element:(<AdminRoute><AddItems></AddItems></AdminRoute>)
       },
       {
        path:'managitems',
-       element:<AdminRoute><ManagItems></ManagItems></AdminRoute>
+       element:(<AdminRoute><ManagItems></ManagItems></AdminRoute>),
+      },
+      {
+       path:'updateitem/:id',
+       element:(<AdminRoute>
+        <UpdateItem></UpdateItem>
+       </AdminRoute>),
+       loader:({params}) => fetch(`http://localhost:5000/menu/${params.id}`, {
+        headers: {
+        authorization: `Bearer ${localStorage.getItem('access-token')}`,
+      },
+       })
       },
       {
         path:'allusers',
-        element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
+        element:(<AdminRoute><AllUsers></AllUsers></AdminRoute>)
       }
     ]
   }
